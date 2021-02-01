@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">        
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <!-- <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/custom-functions-runtime.js" type="text/javascript"></script> -->
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+    <style>
+    
+ 
+   .image{
+           width: 20%;
+    /* margin-left: 38%; */
+    /* margin-bottom: 4%; */
+    /* margin-top: 4%; */
+    }
+    body{
+    padding:0px 15px 0px 15px;
+    }
+    .titlep{
+    font-weight: bold;
+    margin-bottom: 4px;
+    }
+    .desc{
+        color: #6f6f6f;
+    }
+    .example{
+        background: #dcfbdc;
+    color: #024802;
+    padding: 10px;
+    border-radius: 6px;
+    }
+    .head{
+    font-size:1.8rem;
+    font-weight:bold;
+    }
+    .dt{
+    font-size:14px;
+    }
+    .footer{
+   
+    bottom: 0;
+    border-top: 1px solid #d0d0d0;
+    color: grey;
+    width: 100%;
+    text-align: center;
+    }
+    
+        
+    </style>
+  </head>
+  <body> 
+    
+    <div style="text-align: center;">
+       <img class="image" src="https://i.ibb.co/xjk9Sd6/GS.png" alt="GS" border="0">    
+       <p class="head">Custom Functions</p>
+       <hr />
+    </div>
+    
+    <br />
+    <section id="sideload-msg" class="ms-welcome__main">
+      <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+  </section>
+    <main id="app-body" class="ms-welcome__main" style="display: none;">
+    <div>
+    <p class="titlep">1) EXPENSE</p>
+    <p class="desc">Calcutates the expense under given category from startDate till endDate inclusive.<br> 
+    If category is empty then total expense for given period is fetched. If endDate is empty then it is assumed to be same as startDate.</p>
+    Parameters:
+    <ul>
+      <li>category</li>
+      <li>startDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+      <li>endDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+    </ul>        
+    <p class="example ">=EXPENSE("Job Expenses", "2018-01-01", "2020-02-01")</p>
+    <p class="example ">=EXPENSE("Job Expenses", "jan-2020", "nov-2020")</p>
+    <p class="example ">=EXPENSE("Job Expenses", "jan-2020",)</p>
+    </div>
+    
+    <div>
+    <p class="titlep">2) REVENUE</p>
+    <p class="desc">Calcutates the revenue under given category from startDate till endDate inclusive.<br>
+    If category is empty then total revenue for given perioed is fetched. If endDate is empty then it is assumed to be same as startDate.</p>
+    Parameters:
+    <ul>
+      <li>category</li>
+      <li>startDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY)  </span></li>
+      <li>endDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+    </ul>        
+     <p class="example ">=REVENUE("Job Expenses", "2018-01-01", "2020-02-01")</p>
+    <p class="example">=REVENUE("Landscaping Services", "jan-2020", "nov-2020")</p>
+    <p class="example">=REVENUE("Landscaping Services", "jan-2020",)</p>
+    </div>
+    <div>
+      <p class="titlep">3) COGS</p>
+      <p class="desc">Calcutates the Cost of Goods Sold under a given category from the startDate till the endDate.<br> 
+      If the category is empty then the total Cost of Goods Sold for given period is displayed. If endDate is empty then it is assumed to be same as startDate.The formula has to match the phrasing from the List Categories tab exactly in order to work.</p>
+      Parameters:
+      <ul>
+        <li>category</li>
+        <li>startDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+        <li>endDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+      </ul>        
+      <p class="example ">=COGS("COGS", "2018-01-01", "2020-02-01")</p>
+      <p class="example ">=COGS("COGS", "jan-2020", "nov-2020")</p>
+      <p class="example ">=COGS("COGS", "jan-2020",)</p>
+      </div>
+      
+      <div>
+      <p class="titlep">4) Other Income</p>
+      <p class="desc">Calcutates the Other Income under a given category from the startDate till the endDate.<br> 
+      If the category is empty then the total expense for given period is displayed. If endDate is empty then it is assumed to be same as startDate.The formula has to match the phrasing from the List Categories tab exactly in order to work.</p>
+      Parameters:
+      <ul>
+        <li>category</li>
+        <li>startDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+        <li>endDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+      </ul>        
+      <p class="example ">=OTHERINCOME("Other Income", "2018-01-01", "2020-02-01")</p>
+      <p class="example ">=OTHERINCOME("Other Income", "jan-2020", "nov-2020")</p>
+      <p class="example ">=OTHERINCOME("Other Income", "jan-2020",)</p>
+      </div>
+      
+      <div>
+      <p class="titlep">5) Other Expense</p>
+      <p class="desc">Calcutates the Other Expenseexpense under a given category from the startDate till the endDate.<br> 
+      If the category is empty then the total other expense for given period is displayed. If endDate is empty then it is assumed to be same as startDate. The formula has to match the phrasing from the List Categories tab exactly in order to work.</p>
+      Parameters:
+      <ul>
+        <li>category</li>
+        <li>startDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+        <li>endDate <span class="desc dt">(YYYY-MM-DD) or (mmm-YYYY) </span></li>
+      </ul>        
+      <p class="example ">=OTHEREXPENSE("Other Expenses", "2018-01-01", "2020-02-01")</p>
+      <p class="example ">=OTHEREXPENSE("Other Expenses", "jan-2020", "nov-2020")</p>
+      <p class="example ">=OTHEREXPENSE("Other Expenses", "jan-2020",)</p>
+      </div>
+     
+      
+    <p class="footer"><b>www.geniussheets.com</b><br />geniussheets@gmail.com</p>
+  </main>
+
+ </body>
+</html>
+<script type="text/javascript" >
+  //Loged-in user Info
+
+// //   Office.onReady(info => {
+// //   if (info.host === Office.HostType.Excel) {
+ 
+// //       Office.context.ui.messageParent("Sign-Out");
+
+  
+   
+// //   }
+// // });
+   
+  </script>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>e5e33580-5437-449f-a54b-9526ef623bad</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Contoso</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="GeniusSheet"/>
+  <Description DefaultValue="A template to get started."/>
+  <IconUrl DefaultValue="https://localhost:3000/GS-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/GS.png"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <AppDomains>
+    <AppDomain>https://www.geniussheets.com</AppDomain>
+    <AppDomain>https://g.auth.us-east-1.amazoncognito.com/</AppDomain>
+    <AppDomain>https://www.intuit.com/</AppDomain>
+    <AppDomain>https://aws.amazon.com/</AppDomain>
+    <AppDomain>https://accounts.intuit.com/</AppDomain>
+    <AppDomain>https%3A%2F%2Frb.gy%2Fo66u34/</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="CustomFunctionsRuntime" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/logintaskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+      <AllFormFactors>
+        <ExtensionPoint xsi:type="CustomFunctions">
+          <Script>
+            <SourceLocation resid="Functions.Script.Url"/>
+          </Script>
+          <Page>
+            <SourceLocation resid="Functions.Page.Url"/>
+          </Page>
+          <Metadata>
+            <SourceLocation resid="Functions.Metadata.Url"/>
+          </Metadata>
+          <Namespace resid="Functions.Namespace"/>
+        </ExtensionPoint>
+      </AllFormFactors>
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="CommandsGroup">
+                <Label resid="CommandsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+
+                  <Control xsi:type="Button" id="TaskpaneLoginButton">
+                  <Label resid="LoginTaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="ImIcon.16x16" />
+                    <bt:Image size="32" resid="ImIcon.32x32" />
+                    <bt:Image size="80" resid="ImIcon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Loginid1</TaskpaneId>
+                    <SourceLocation resid="LoginTaskpane.Url" />
+                  </Action>
+                </Control>
+
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/GS-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/GS-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/GS-64.png"/>
+        <bt:Image id="ImIcon.16x16" DefaultValue="https://localhost:3000/assets/loginimg.png"/>
+        <bt:Image id="ImIcon.32x32" DefaultValue="https://localhost:3000/assets/loginimg.png"/>
+        <bt:Image id="ImIcon.80x80" DefaultValue="https://localhost:3000/assets/loginimg.png"/>
+
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:3000/functions.js"/>
+        <bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/functions.json"/>
+        <bt:Url id="Functions.Page.Url" DefaultValue="https://localhost:3000/functions.html"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+        <bt:Url id="LoginTaskpane.Url" DefaultValue="https://localhost:3000/logintaskpane.html"/>
+
+
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Functions.Namespace" DefaultValue="GENIUS"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Genius Sheets"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="Genius Sheets"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="GS Functions"/>
+        <bt:String id="LoginTaskpaneButton.Label" DefaultValue="GS LOGIN"/>
+        <bt:String id="SignupTaskpaneButton.Label" DefaultValue="GS LOGIN"/>
+        <bt:String id="MenuTaskpaneButton.Label" DefaultValue="GS Menu"/>
+
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Your Genius Sheets add-in loaded succesfully. Authenticate to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Authenticate to Genius Sheets"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
