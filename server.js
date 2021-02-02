@@ -22,8 +22,8 @@ app.use(function (req, res, next) {
 
 const cert = {
 //    key: fs.readFileSync(path.resolve('cert/key.pem')),
-    key: fs.readFileSync(path.resolve('cert/server.key')),
+    // key: fs.readFileSync(path.resolve('cert/server.key')),
 //    cert: fs.readFileSync(path.resolve('cert/cert.pem'))
-    cert: fs.readFileSync(path.resolve('cert/server.crt'))
+    // cert: fs.readFileSync(path.resolve('cert/server.crt'))
 };
-https.createServer(cert, app).listen(3000, () => console.log('Server running on 3000'));
+https.createServer(cert, app).listen(80, () => console.log('Server running on 3000'));
